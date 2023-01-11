@@ -7,6 +7,8 @@ def single_minute_row(time):
         return "YYYY"
     if minutes % 5 == 2:
         return "YYOO"
+    if minutes % 5 == 3:
+        return "YYYO"
     return "OOOO"
 
 
@@ -24,8 +26,12 @@ class MyTestCase(unittest.TestCase):
     def test_to_32(self):
         self.assertEqual("YYOO", single_minute_row("12:32:00"))
 
+    def test_to_43(self):
+        self.assertEqual("YYYO", single_minute_row("12:43:00"))
+
     def test_parse_time_to_single_minute(self):
         self.assertEqual(32, extract_single_minute("12:32:00"))
+
 
 if __name__ == '__main__':
     unittest.main()
