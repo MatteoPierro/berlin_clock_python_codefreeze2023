@@ -23,6 +23,8 @@ def five_minutes_row(time):
         return "YOOOOOOOOOO"
     if minutes // 5 == 2:
         return "YYOOOOOOOOO"
+    if minutes // 5 == 3:
+        return "YYROOOOOOOO"
     return "OOOOOOOOOOO"
 
 
@@ -56,6 +58,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("YYRYYRYOOOO", five_minutes_row("12:35:00"))
         self.assertEqual("YOOOOOOOOOO", five_minutes_row("12:05:00"))
         self.assertEqual("YYOOOOOOOOO", five_minutes_row("12:10:00"))
+        self.assertEqual("YYROOOOOOOO", five_minutes_row("12:15:00"))
 
 
 if __name__ == '__main__':
