@@ -2,17 +2,17 @@ import unittest
 
 
 def single_minute_row(time):
-    minutes = extract_single_minute(time)
+    minutes = extract_minutes(time)
     number_of_active_lights = minutes % 5
     return ("Y" * number_of_active_lights).ljust(4, 'O')
 
 
-def extract_single_minute(time):
+def extract_minutes(time):
     return int(time.split(":")[1])
 
 
 def five_minutes_row(time):
-    minutes = extract_single_minute(time)
+    minutes = extract_minutes(time)
     lights_on = minutes // 5
     groups_with_red_light = lights_on // 3
     remaining_lights = lights_on % 3
@@ -36,7 +36,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("YOOO", single_minute_row("12:26:00"))
 
     def test_parse_time_to_single_minute(self):
-        self.assertEqual(32, extract_single_minute("12:32:00"))
+        self.assertEqual(32, extract_minutes("12:32:00"))
 
     def test_something(self):
         self.assertEqual("OOOOOOOOOOO", five_minutes_row("00:00:00"))
