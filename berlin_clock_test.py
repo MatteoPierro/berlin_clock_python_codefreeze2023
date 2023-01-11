@@ -3,9 +3,9 @@ import unittest
 
 def single_minute_row(time):
     minutes = extract_single_minute(time)
-    if minutes == 59:
+    if minutes % 5 == 4:
         return "YYYY"
-    if minutes == 32:
+    if minutes % 5 == 2:
         return "YYOO"
     return "OOOO"
 
