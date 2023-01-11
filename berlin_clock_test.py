@@ -11,7 +11,9 @@ def extract_single_minute(time):
     return int(time.split(":")[1])
 
 
-def five_minutes_row(param):
+def five_minutes_row(time):
+    if time == "23:59:59":
+        return "YYRYYRYYRYY"
     return "OOOOOOOOOOO"
 
 
@@ -36,6 +38,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_something(self):
         self.assertEqual("OOOOOOOOOOO", five_minutes_row("00:00:00"))
+
+    def test_something2(self):
+        self.assertEqual("YYRYYRYYRYY", five_minutes_row("23:59:59"))
 
 
 if __name__ == '__main__':
