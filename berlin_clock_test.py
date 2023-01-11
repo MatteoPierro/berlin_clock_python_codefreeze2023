@@ -61,8 +61,9 @@ def berlin_to_digital(berlin_clock):
     hours = str(number_of_hours).rjust(2, "0")
 
     number_of_minutes = minutes_from(berlin_clock)
+    minutes = str(number_of_minutes).rjust(2, "0")
 
-    return f"{hours}:0{number_of_minutes}:00"
+    return f"{hours}:{minutes}:00"
 
 
 def minutes_from(berlin_clock):
@@ -138,6 +139,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("15:00:00", berlin_to_digital("YRRROOOOOOOOOOOOOOOOOOOO"))
         self.assertEqual("01:00:00", berlin_to_digital("Y000OROOOOOOOOOOOOOOOOOO"))
         self.assertEqual("00:05:00", berlin_to_digital(convert_to_berlin_clock("00:05:00")))
+        self.assertEqual("00:10:00", berlin_to_digital(convert_to_berlin_clock("00:10:00")))
 
 
 if __name__ == '__main__':
