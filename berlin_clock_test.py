@@ -13,10 +13,10 @@ def extract_single_minute(time):
 
 def five_minutes_row(time):
     minutes = extract_single_minute(time)
-    number_of_lights_on = minutes // 5
-    number_of_groups_with_red_light = number_of_lights_on // 3
-    remaining_lights = number_of_lights_on % 3
-    return ("YYR" * number_of_groups_with_red_light + "Y" * remaining_lights).ljust(11, "O")
+    lights_on = minutes // 5
+    groups_with_red_light = lights_on // 3
+    remaining_lights = lights_on % 3
+    return ("YYR" * groups_with_red_light + "Y" * remaining_lights).ljust(11, "O")
 
 
 class MyTestCase(unittest.TestCase):
