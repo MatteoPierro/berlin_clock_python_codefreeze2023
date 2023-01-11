@@ -48,11 +48,11 @@ def second_light(time):
 
 def convert_to_berlin_clock(time):
     return "".join([
-      second_light(time),
-      five_hours_row(time),
-      single_hour_row(time),
-      five_minutes_row(time),
-      single_minute_row(time)
+        second_light(time),
+        five_hours_row(time),
+        single_hour_row(time),
+        five_minutes_row(time),
+        single_minute_row(time)
     ])
 
 
@@ -62,7 +62,7 @@ def berlin_to_digital(berlin_clock):
     number_of_hours = five_hours.count("R") * 5 + single_hours.count("R")
     hours = str(number_of_hours).rjust(2, "0")
     five_minutes = berlin_clock[9:20]
-    number_of_minutes = (five_minutes.count("R") + five_minutes.count("Y")) * 5
+    number_of_minutes = 55 - (five_minutes.count("O") * 5)
     return f"{hours}:0{number_of_minutes}:00"
 
 
