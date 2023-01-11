@@ -57,13 +57,25 @@ def convert_to_berlin_clock(time):
 
 
 def berlin_to_digital(berlin_clock):
+    number_of_hours = hours_from(berlin_clock)
+    hours = str(number_of_hours).rjust(2, "0")
+
+    number_of_minutes = minutes_from(berlin_clock)
+
+    return f"{hours}:0{number_of_minutes}:00"
+
+
+def minutes_from(berlin_clock):
+    five_minutes = berlin_clock[9:20]
+    number_of_minutes = 55 - (five_minutes.count("O") * 5)
+    return number_of_minutes
+
+
+def hours_from(berlin_clock):
     five_hours = berlin_clock[1:5]
     single_hours = berlin_clock[5:9]
     number_of_hours = five_hours.count("R") * 5 + single_hours.count("R")
-    hours = str(number_of_hours).rjust(2, "0")
-    five_minutes = berlin_clock[9:20]
-    number_of_minutes = 55 - (five_minutes.count("O") * 5)
-    return f"{hours}:0{number_of_minutes}:00"
+    return number_of_hours
 
 
 class MyTestCase(unittest.TestCase):
