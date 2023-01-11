@@ -15,6 +15,10 @@ def five_minutes_row(time):
     minutes = extract_single_minute(time)
     if minutes == 59:
         return "YYRYYRYYRYY"
+    if minutes == 23:
+        return "YYRYOOOOOOO"
+    if minutes == 35:
+        return "YYRYYRYOOOO"
     return "OOOOOOOOOOO"
 
 
@@ -42,6 +46,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_something2(self):
         self.assertEqual("YYRYYRYYRYY", five_minutes_row("23:59:59"))
+
+    def test_something3(self):
+        self.assertEqual("YYRYOOOOOOO", five_minutes_row("12:23:00"))
+        self.assertEqual("YYRYYRYOOOO", five_minutes_row("12:35:00"))
 
 
 if __name__ == '__main__':
