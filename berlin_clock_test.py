@@ -57,9 +57,9 @@ def convert_to_berlin_clock(time):
 
 
 def berlin_to_digital(berlin_clock):
-    if berlin_clock == "YROOOOOOOOOOOOOOOOOOOOOO":
-        return "05:00:00"
-    return "00:00:00"
+    five_hours = berlin_clock[1:5]
+    number_of_hours = five_hours.count("R") * 5
+    return f"0{number_of_hours}:00:00"
 
 
 class MyTestCase(unittest.TestCase):
