@@ -1,5 +1,7 @@
 import unittest
 
+NUMBER_OF_FIVE_MINUTES_LAMPS = 11
+
 
 def single_minute_row(time):
     minutes = extract_minutes(time)
@@ -67,11 +69,22 @@ def berlin_to_digital(berlin_clock):
 
 
 def minutes_from(berlin_clock):
-    five_minutes = berlin_clock[9:20]
-    single_minutes = berlin_clock[20:24]
-    five_minutes_lights_on = 11 - five_minutes.count("O")
-    single_minutes_lights_on = single_minutes.count("Y")
+    five_minutes_lights_on = five_minutes_lights_on_from(berlin_clock)
+    single_minutes_lights_on = single_minutes_lights_on_from(berlin_clock)
     return (five_minutes_lights_on * 5) + single_minutes_lights_on
+
+
+def single_minutes_lights_on_from(berlin_clock):
+    single_minutes = berlin_clock[20:24]
+    single_minutes_lights_on = single_minutes.count("Y")
+    return single_minutes_lights_on
+
+
+def five_minutes_lights_on_from(berlin_clock):
+    five_minutes = berlin_clock[9:20]
+    five_minutes_light_off = five_minutes.count("O")
+    five_minutes_lights_on = NUMBER_OF_FIVE_MINUTES_LAMPS - five_minutes_light_off
+    return five_minutes_lights_on
 
 
 def hours_from(berlin_clock):
