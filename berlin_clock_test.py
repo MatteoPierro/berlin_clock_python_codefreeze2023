@@ -39,6 +39,13 @@ def five_hours_row(time):
     return ("R" * number_of_active_lights).ljust(4, 'O')
 
 
+def second_light(time):
+    seconds = extract_seconds(time)
+    if seconds % 2:
+        return "O"
+    return "Y"
+
+
 class MyTestCase(unittest.TestCase):
 
     def test_extract_seconds(self):
@@ -79,6 +86,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("ROOO", five_hours_row("08:23:00"))
         self.assertEqual("RROO", five_hours_row("10:23:00"))
         self.assertEqual("RRRO", five_hours_row("15:23:00"))
+
+    def test_second_light(self):
+        self.assertEqual("Y", second_light("00:00:00"))
+        self.assertEqual("O", second_light("00:00:01"))
+        self.assertEqual("Y", second_light("00:00:04"))
+        self.assertEqual("O", second_light("23:59:59"))
 
 
 if __name__ == '__main__':
