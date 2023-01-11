@@ -56,6 +56,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("OOOO", single_hour_row("00:00:00"))
         self.assertEqual("RRRO", single_hour_row("23:59:59"))
         self.assertEqual("RROO", single_hour_row("02:04:00"))
+        self.assertEqual("ROOO", single_hour_row("06:04:00"))
+        self.assertEqual("RRRR", single_hour_row("14:35:00"))
 
 
 if __name__ == '__main__':
