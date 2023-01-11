@@ -24,11 +24,9 @@ def five_minutes_row(time):
 
 
 def single_hour_row(time):
-    if time == "23:59:59":
-        return "RRRO"
-    if time == "02:04:00":
-        return "RROO"
-    return "OOOO"
+    hours = extract_hours(time)
+    number_of_active_lights = hours % 5
+    return ("R" * number_of_active_lights).ljust(4, 'O')
 
 
 class MyTestCase(unittest.TestCase):
