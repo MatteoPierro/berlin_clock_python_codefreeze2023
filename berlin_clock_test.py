@@ -20,31 +20,19 @@ def five_minutes_row(time):
 
 
 class MyTestCase(unittest.TestCase):
-    def test_to_midnight(self):
-        self.assertEqual("OOOO", single_minute_row("00:00:00"))
-
-    def test_to_59(self):
-        self.assertEqual("YYYY", single_minute_row("23:59:59"))
-
-    def test_to_32(self):
-        self.assertEqual("YYOO", single_minute_row("12:32:00"))
-
-    def test_to_43(self):
-        self.assertEqual("YYYO", single_minute_row("12:43:00"))
-
-    def test_to_26(self):
-        self.assertEqual("YOOO", single_minute_row("12:26:00"))
-
-    def test_parse_time_to_single_minute(self):
+    def test_extract_minutes(self):
         self.assertEqual(32, extract_minutes("12:32:00"))
 
-    def test_something(self):
+    def test_single_minutes_row(self):
+        self.assertEqual("OOOO", single_minute_row("00:00:00"))
+        self.assertEqual("YYYY", single_minute_row("23:59:59"))
+        self.assertEqual("YYOO", single_minute_row("12:32:00"))
+        self.assertEqual("YYYO", single_minute_row("12:43:00"))
+        self.assertEqual("YOOO", single_minute_row("12:26:00"))
+
+    def test_five_minutes_row(self):
         self.assertEqual("OOOOOOOOOOO", five_minutes_row("00:00:00"))
-
-    def test_something2(self):
         self.assertEqual("YYRYYRYYRYY", five_minutes_row("23:59:59"))
-
-    def test_something3(self):
         self.assertEqual("YYRYOOOOOOO", five_minutes_row("12:23:00"))
         self.assertEqual("YYRYYRYOOOO", five_minutes_row("12:35:00"))
         self.assertEqual("YOOOOOOOOOO", five_minutes_row("12:05:00"))
