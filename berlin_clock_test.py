@@ -3,15 +3,8 @@ import unittest
 
 def single_minute_row(time):
     minutes = extract_single_minute(time)
-    if minutes % 5 == 4:
-        return "YYYY"
-    if minutes % 5 == 2:
-        return "YYOO"
-    if minutes % 5 == 3:
-        return "YYYO"
-    if minutes % 5 == 1:
-        return "YOOO"
-    return "OOOO"
+    number_of_active_lights = minutes % 5
+    return ("Y" * number_of_active_lights).ljust(4, 'O')
 
 
 def extract_single_minute(time):
