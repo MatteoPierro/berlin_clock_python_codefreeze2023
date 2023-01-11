@@ -1,7 +1,5 @@
 import unittest
 
-MAXIMUM_MINUTES_IN_FIVE_MINUTES_ROW = 55
-
 
 def single_minute_row(time):
     minutes = extract_minutes(time)
@@ -71,9 +69,9 @@ def berlin_to_digital(berlin_clock):
 def minutes_from(berlin_clock):
     five_minutes = berlin_clock[9:20]
     single_minutes = berlin_clock[20:24]
-    five_minutes_lights_off = five_minutes.count("O")
+    five_minutes_lights_on = 11 - five_minutes.count("O")
     single_minutes_lights_on = single_minutes.count("Y")
-    return MAXIMUM_MINUTES_IN_FIVE_MINUTES_ROW - (five_minutes_lights_off * 5) + single_minutes_lights_on
+    return (five_minutes_lights_on * 5) + single_minutes_lights_on
 
 
 def hours_from(berlin_clock):
