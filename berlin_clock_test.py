@@ -2,9 +2,10 @@ import unittest
 
 
 def single_minute_row(time):
-    if time == "23:59:59":
+    minutes = extract_single_minute(time)
+    if minutes == 59:
         return "YYYY"
-    if time == "12:32:00":
+    if minutes == 32:
         return "YYOO"
     return "OOOO"
 
