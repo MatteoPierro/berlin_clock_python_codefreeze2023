@@ -6,9 +6,8 @@ def single_minute_row(time):
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        time = "00:00:00"
-        self.assertEqual("OOOO", single_minute_row(time))
+    def test_to_midnight(self):
+        self.assertEqual("OOOO", single_minute_row("00:00:00"))
 
 
 if __name__ == '__main__':
