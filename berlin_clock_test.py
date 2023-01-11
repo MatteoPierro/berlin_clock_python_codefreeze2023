@@ -13,6 +13,9 @@ def extract_single_minute(time):
 
 def five_minutes_row(time):
     minutes = extract_single_minute(time)
+    rows = {
+        0: "OOOOOOOOOOO"
+    }
     if minutes // 5 == 11:
         return "YYRYYRYYRYY"
     if minutes // 5 == 4:
@@ -25,7 +28,7 @@ def five_minutes_row(time):
         return "YYOOOOOOOOO"
     if minutes // 5 == 3:
         return "YYROOOOOOOO"
-    return "OOOOOOOOOOO"
+    return rows[0]
 
 
 class MyTestCase(unittest.TestCase):
