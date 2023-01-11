@@ -12,7 +12,8 @@ def extract_single_minute(time):
 
 
 def five_minutes_row(time):
-    if time == "23:59:59":
+    minutes = extract_single_minute(time)
+    if minutes == 59:
         return "YYRYYRYYRYY"
     return "OOOOOOOOOOO"
 
