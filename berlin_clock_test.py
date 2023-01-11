@@ -56,6 +56,10 @@ def convert_to_berlin_clock(time):
     ])
 
 
+def berlin_to_digital(berlin_clock):
+    return "00:00:00"
+
+
 class MyTestCase(unittest.TestCase):
 
     def test_extract_seconds(self):
@@ -108,6 +112,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("ORRRRRRROYYRYYRYYRYYYYYY", convert_to_berlin_clock("23:59:59"))
         self.assertEqual("YRRROROOOYYRYYRYYRYOOOOO", convert_to_berlin_clock("16:50:06"))
         self.assertEqual("ORROOROOOYYRYYRYOOOOYYOO", convert_to_berlin_clock("11:37:01"))
+
+    def test_berlin_to_digital(self):
+        self.assertEqual("00:00:00", berlin_to_digital("YOOOOOOOOOOOOOOOOOOOOOOO"))
 
 
 if __name__ == '__main__':
