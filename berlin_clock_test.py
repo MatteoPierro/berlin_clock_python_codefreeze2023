@@ -76,15 +76,13 @@ def minutes_from(berlin_clock):
 
 def single_minutes_lights_on_from(berlin_clock):
     single_minutes = berlin_clock[20:24]
-    single_minutes_lights_on = single_minutes.count("Y")
-    return single_minutes_lights_on
+    return single_minutes.count("Y")
 
 
 def five_minutes_lights_on_from(berlin_clock):
     five_minutes = berlin_clock[9:20]
     five_minutes_light_off = five_minutes.count("O")
-    five_minutes_lights_on = NUMBER_OF_FIVE_MINUTES_LAMPS - five_minutes_light_off
-    return five_minutes_lights_on
+    return NUMBER_OF_FIVE_MINUTES_LAMPS - five_minutes_light_off
 
 
 def hours_from(berlin_clock):
@@ -155,6 +153,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("00:05:00", berlin_to_digital(convert_to_berlin_clock("00:05:00")))
         self.assertEqual("00:10:00", berlin_to_digital(convert_to_berlin_clock("00:10:00")))
         self.assertEqual("00:01:00", berlin_to_digital(convert_to_berlin_clock("00:01:00")))
+        self.assertEqual("23:59:00", berlin_to_digital("ORRRRRRROYYRYYRYYRYYYYYY"))
+        self.assertEqual("16:50:00", berlin_to_digital("YRRROROOOYYRYYRYYRYOOOOO"))
+        self.assertEqual("11:37:00", berlin_to_digital("ORROOROOOYYRYYRYOOOOYYOO"))
 
 
 if __name__ == '__main__':
