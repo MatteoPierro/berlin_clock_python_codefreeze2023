@@ -61,7 +61,9 @@ def berlin_to_digital(berlin_clock):
     single_hours = berlin_clock[5:9]
     number_of_hours = five_hours.count("R") * 5 + single_hours.count("R")
     hours = str(number_of_hours).rjust(2, "0")
-    return f"{hours}:00:00"
+    five_minutes = berlin_clock[9:20]
+    number_of_minutes = (five_minutes.count("R") + five_minutes.count("Y")) * 5
+    return f"{hours}:0{number_of_minutes}:00"
 
 
 class MyTestCase(unittest.TestCase):
@@ -123,6 +125,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("10:00:00", berlin_to_digital("YRROOOOOOOOOOOOOOOOOOOOO"))
         self.assertEqual("15:00:00", berlin_to_digital("YRRROOOOOOOOOOOOOOOOOOOO"))
         self.assertEqual("01:00:00", berlin_to_digital("Y000OROOOOOOOOOOOOOOOOOO"))
+        self.assertEqual("00:05:00", berlin_to_digital(convert_to_berlin_clock("00:05:00")))
 
 
 if __name__ == '__main__':
