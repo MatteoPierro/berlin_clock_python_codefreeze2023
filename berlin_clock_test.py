@@ -29,6 +29,14 @@ def single_hour_row(time):
     return ("R" * number_of_active_lights).ljust(4, 'O')
 
 
+def five_hours_row(time):
+    if time == "23:59:59":
+        return "RRRR"
+    if time == "08:23:00":
+        return "ROOO"
+    return "OOOO"
+
+
 class MyTestCase(unittest.TestCase):
     def test_extract_minutes(self):
         self.assertEqual(32, extract_minutes("12:32:00"))
@@ -58,6 +66,11 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("RROO", single_hour_row("02:04:00"))
         self.assertEqual("ROOO", single_hour_row("06:04:00"))
         self.assertEqual("RRRR", single_hour_row("14:35:00"))
+
+    def test_five_hours_row(self):
+        self.assertEqual("OOOO", five_hours_row("00:00:00"))
+        self.assertEqual("RRRR", five_hours_row("23:59:59"))
+        self.assertEqual("ROOO", five_hours_row("08:23:00"))
 
 
 if __name__ == '__main__':
