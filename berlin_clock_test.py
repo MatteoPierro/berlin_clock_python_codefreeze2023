@@ -46,7 +46,7 @@ def second_light(time):
     return "Y"
 
 
-def something(time):
+def convert_to_berlin_clock(time):
     return "".join([
       second_light(time),
       five_hours_row(time),
@@ -103,11 +103,11 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("Y", second_light("00:00:04"))
         self.assertEqual("O", second_light("23:59:59"))
 
-    def test_something(self):
-        self.assertEqual("YOOOOOOOOOOOOOOOOOOOOOOO", something("00:00:00"))
-        self.assertEqual("ORRRRRRROYYRYYRYYRYYYYYY", something("23:59:59"))
-        self.assertEqual("YRRROROOOYYRYYRYYRYOOOOO", something("16:50:06"))
-        self.assertEqual("ORROOROOOYYRYYRYOOOOYYOO", something("11:37:01"))
+    def test_convert_to_berlin_clock(self):
+        self.assertEqual("YOOOOOOOOOOOOOOOOOOOOOOO", convert_to_berlin_clock("00:00:00"))
+        self.assertEqual("ORRRRRRROYYRYYRYYRYYYYYY", convert_to_berlin_clock("23:59:59"))
+        self.assertEqual("YRRROROOOYYRYYRYYRYOOOOO", convert_to_berlin_clock("16:50:06"))
+        self.assertEqual("ORROOROOOYYRYYRYOOOOYYOO", convert_to_berlin_clock("11:37:01"))
 
 
 if __name__ == '__main__':
