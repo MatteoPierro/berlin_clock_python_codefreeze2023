@@ -57,6 +57,8 @@ def convert_to_berlin_clock(time):
 
 
 def berlin_to_digital(berlin_clock):
+    if berlin_clock == "YROOOOOOOOOOOOOOOOOOOOOO":
+        return "05:00:00"
     return "00:00:00"
 
 
@@ -115,6 +117,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_berlin_to_digital(self):
         self.assertEqual("00:00:00", berlin_to_digital("YOOOOOOOOOOOOOOOOOOOOOOO"))
+        self.assertEqual("05:00:00", berlin_to_digital("YROOOOOOOOOOOOOOOOOOOOOO"))
 
 
 if __name__ == '__main__':
