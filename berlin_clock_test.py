@@ -11,6 +11,10 @@ def extract_minutes(time):
     return int(time.split(":")[1])
 
 
+def extract_hours(time):
+    return int(time.split(":")[0])
+
+
 def five_minutes_row(time):
     minutes = extract_minutes(time)
     lights_on = minutes // 5
@@ -30,6 +34,9 @@ def single_hour_row(time):
 class MyTestCase(unittest.TestCase):
     def test_extract_minutes(self):
         self.assertEqual(32, extract_minutes("12:32:00"))
+
+    def test_extract_hours(self):
+        self.assertEqual(12, extract_hours("12:32:00"))
 
     def test_single_minutes_row(self):
         self.assertEqual("OOOO", single_minute_row("00:00:00"))
